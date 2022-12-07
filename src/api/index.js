@@ -24,7 +24,7 @@ export const fetchData = async () => {
 
     } 
     catch(error){
-
+        console.log(error);
     }
     
 }
@@ -42,6 +42,21 @@ export const fetchDailyData = async () => {
         }));
         return modifiedData;
     } catch(error){
-        
+        console.log(error);
     }
 }
+
+// FUNCTION - fetching data <CountryPicker> for user select
+export const fetchCountries = async () => {
+    try {
+        // take the countries data what we want.
+      const {data: {countries}} = await axios.get(`${url}/countries`);
+
+        // use map() function to loop the array and take the value.
+      return countries.map((country) => country.name);
+    
+      
+    } catch (error) {
+      return error;
+    }
+  };

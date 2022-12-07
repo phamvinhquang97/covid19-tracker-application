@@ -14,9 +14,6 @@ class App extends React.Component {
     // build asynchronous componentDidMound() to get the data.
     async componentDidMount() {
         const fetchedData = await fetchData();
-        console.log("this is data: ");
-        console.log(fetchedData);
-
         // setState is the function to re-render interface.
         this.setState({data: fetchedData});
     }
@@ -28,10 +25,10 @@ class App extends React.Component {
             <div className={styles.container}>
                 {/* Card components */}
                 <Cards data = {data}/>
-                {/* Chart components */}
-                <Chart />
                 {/* CountryPicker components */}
                 <CountryPicker />
+                {/* Chart components */}
+                <Chart />
             </div>
         )
     }
