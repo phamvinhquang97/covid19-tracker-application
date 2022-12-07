@@ -3,7 +3,7 @@ import {NativeSelect, FormControl} from '@mui/material/';
 import styles from './CountryPicker.module.css';
 import { fetchCountries } from '../../api'
 //Using functional component
-const CountryPicker = () =>{
+const CountryPicker = ({handleCountryChange}) =>{
     // fetchedCountries is an array
     const [fetchedCountries, setFetchedCountries] = useState([]);
 
@@ -16,12 +16,12 @@ const CountryPicker = () =>{
         fetchAPI();
         // [setFetchedCountries] call because for the value in the list change.
     }, [setFetchedCountries]);
-    console.log(fetchedCountries);
 
     return (
-        <FormControl>
+        <FormControl className={styles.formControl}>
             {/* fetching countryPicker from api -> loop to for user select. */}
-            <NativeSelect className={styles.formControl}>
+            <NativeSelect defaultValue="" onChange= {(e) => handleCountryChange
+                (e.target.value)}>
                 <option value= "global"> Global</option>
                 {/* use map function to loop the data -> create option and passed country inside. */}
                 {/* key and value should be set when using map - REACT RULE */}

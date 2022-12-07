@@ -4,11 +4,15 @@ import axios from "axios";
 const url = 'https://covid19.mathdro.id/api';
 
 // FUNCTION to fetch the data <Card> -> using asynchronous function to deal with asynchronous data.
-export const fetchData = async () => {
+export const fetchData = async (country) => {
+    let changeableUrl = url;
+    if(country) {
+        changeableUrl = `${url}/countries/${country}`;
+    }
     // if request successful
     try{
         // return response from API -> structure what data we want to take
-        const {data: {confirmed, recovered, deaths, lastUpdate}} = await axios.get(url); // data = response.data
+        const {data: {confirmed, recovered, deaths, lastUpdate}} = await axios.get(changeableUrl); // data = response.data
 
         // // To take the data what we need from the object -> because the key and value same name
         // const modifiedData = {

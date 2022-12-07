@@ -7,6 +7,7 @@ class App extends React.Component {
     // put all of the field what we want to re-render on interface into state.
     state = {
         data: {},
+        country: '',
 
 
     }
@@ -17,18 +18,27 @@ class App extends React.Component {
         // setState is the function to re-render interface.
         this.setState({data: fetchedData});
     }
+
+    // handled the countries select and load the data (Infected, Reovered, Dealth) based on the selected country
+    handleCountryChange = async (country) => {
+        // fetch the data 
+        // set the state
+        const fetchedData = await fetchData(country);
+        this.setState({data: fetchedData, country: country});
+    }
+
     render() {
         // this.state.data
-        const {data} = this.state; 
+        const {data, country} = this.state; 
         return(
             // pass the data on props
             <div className={styles.container}>
                 {/* Card components */}
                 <Cards data = {data}/>
                 {/* CountryPicker components */}
-                <CountryPicker />
+                <CountryPicker handleCountryChange={this.handleCountryChange} />
                 {/* Chart components */}
-                <Chart />
+                <Chart data = {data} country = {country} />
             </div>
         )
     }
