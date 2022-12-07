@@ -22,7 +22,7 @@ const CountryPicker = ({handleCountryChange}) =>{
             {/* fetching countryPicker from api -> loop to for user select. */}
             <NativeSelect defaultValue="" onChange= {(e) => handleCountryChange
                 (e.target.value)}>
-                <option value= "global"> Global</option>
+                <option value= ""> Global</option>
                 {/* use map function to loop the data -> create option and passed country inside. */}
                 {/* key and value should be set when using map - REACT RULE */}
                 {fetchedCountries.map((country, i) => <option key={i} value={country}>{country}</option>)}

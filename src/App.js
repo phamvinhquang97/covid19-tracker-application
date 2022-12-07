@@ -3,6 +3,9 @@ import React from 'react';
 import {Cards, Chart, CountryPicker} from './components';
 import styles from './App.module.css';
 import {fetchData} from './api';
+import coronaImage from './images/image.png';
+
+
 class App extends React.Component {
     // put all of the field what we want to re-render on interface into state.
     state = {
@@ -33,6 +36,8 @@ class App extends React.Component {
         return(
             // pass the data on props
             <div className={styles.container}>
+                {/* Image */}
+                <img className={styles.image} src={coronaImage} alt="COVID-19"/>
                 {/* Card components */}
                 <Cards data = {data}/>
                 {/* CountryPicker components */}
