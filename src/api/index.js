@@ -3,7 +3,7 @@ import axios from "axios";
 
 const url = 'https://covid19.mathdro.id/api';
 
-// function to fetch the data -> using asynchronous function to deal with asynchronous data.
+// FUNCTION to fetch the data <Card> -> using asynchronous function to deal with asynchronous data.
 export const fetchData = async () => {
     // if request successful
     try{
@@ -27,4 +27,21 @@ export const fetchData = async () => {
 
     }
     
+}
+
+// FUNCTION fetching the data from API <chart>
+export const fetchDailyData = async () => {
+    try {
+
+        const {data} = await axios.get(`${url}/daily`);
+        // data is array -> use map() function to loop the data -> return the object each loop.
+        const modifiedData = data.map((dailyData) => ({
+            confirmed: dailyData.confirmed.total,
+            deaths: dailyData.deaths.total,
+            date: dailyData.reportDate,
+        }));
+        return modifiedData;
+    } catch(error){
+        
+    }
 }

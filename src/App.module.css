@@ -7,4 +7,6 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    /* put the chart below the <Card> */
+    flex-direction: column;
 }
